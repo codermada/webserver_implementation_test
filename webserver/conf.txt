@@ -1,0 +1,48 @@
+server:
+host localhost
+port 2000
+methods GET
+root website00
+uploads uploads
+directoryListing on
+index index.html
+maxBodySize 5000
+redir /cat.html /cat.html
+redir /error.html /index_.html
+server:
+port 2001
+host 0.0.0.0
+directoryListing off
+root website01
+uploads uploads
+index index.html
+maxBodySize 30000000
+methods GET POST
+#CGI php php
+#redir / http://localhost:2000/
+server:
+port 2002
+host 0.0.0.0
+directoryListing off
+root website01
+uploads uploads
+methods DELETE GET POST
+server:
+port 2003
+host 0.0.0.0
+directoryListing off
+root www
+uploads uploads
+index index.html
+methods DELETE GET POST
+error 404 405 /4xx.html
+error 500 /5xx.html
+server:
+port 2004
+host 0.0.0.0
+directoryListing off
+root CGI
+uploads uploads
+CGI .php /usr/bin/php
+index index.php
+methods GET 
